@@ -1,0 +1,67 @@
+html,
+body {
+  height: 100%;
+}
+ul,
+li {
+  list-style: none;
+  padding: 0;
+}
+
+a,
+a:active,
+a:hover {
+  text-decoration: none;
+}
+
+.layout-wrap {
+  display: flex;
+  height: 100%;
+}
+
+/* 左侧导航菜单 */
+.sider-warp {
+  width: 250px;
+  background: #000;
+  opacity: 0.4;
+  flex: 10%;
+}
+.sider-warp .sider-logo {
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+.sider-warp .sider-logo i {
+  font-size: 50px;
+  color: #fff;
+}
+
+.sider-warp .sider-menus {
+  padding-top: 20px;
+}
+.sider-warp .sider-menus li {
+  height: 38px;
+  line-height: 38px;
+  cursor: pointer;
+  padding-left: 20px;
+}
+.sider-warp .sider-menus li:hover {
+  background: darkcyan;
+}
+
+.sider-warp .sider-menus li i {
+  margin-right: 10px;
+}
+
+.sider-warp .sider-menus li a {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* 右侧主体 */
+.body-warp {
+  background: #ccc;
+  flex: 90%;
+}
