@@ -1,0 +1,20 @@
+.login-wrap {
+  margin: 100px auto;
+  padding-top: 20px;
+}
+.login-title {
+  text-align: center;
+  border-bottom: 2px solid pink;
+  margin-bottom: 20px;
+}
+.login-wrap form {
+  width: 500px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 40px;
+  border-radius: 2px;
+  box-shadow: 5px 5px 2px #f5ecec;
+}
+input.form-control {
+  width: 80%;
+}
