@@ -1,0 +1,9 @@
+{{extend './common/layout.art'}}
+
+{{block 'main'}}
+
+<div class="dashbord-warp">
+dashbord
+</div>
+
+{{/block}}

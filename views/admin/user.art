@@ -1,0 +1,13 @@
+//继承骨架
+{{extend './common/layout.art'}}
+{{block 'link'}}
+<link rel="stylesheet" href="/admin/css/user.css">
+{{/block}}
+
+{{block 'main'}}
+
+<div class="user-warp">
+this is user
+</div>
+
+{{/block}}

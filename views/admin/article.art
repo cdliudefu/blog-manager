@@ -1,3 +1,10 @@
-{{<block>}}
-  <div>dashbord</div>
-{{</block>}}
+{{extend './common/layout.art'}}
+{{block 'link'}}
+ <link rel="stylesheet" href="/admin/css/article.css">
+{{/block}}
+
+{{block 'main'}}
+
+  <div class="article-warp">dashbord</div>
+
+{{/block}}

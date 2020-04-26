@@ -7,17 +7,42 @@
   <title>Welcome</title>
   <link rel="stylesheet" href="/admin/lib/css/bootstrap.min.css">
   <link rel="stylesheet" href="/admin/css/common.css">
+  {{block 'link'}}{{/block}}
 </head>
 <body>
+
   <div class="layout-wrap">
+    <!--左侧侧边栏-->
     {{include './siderbar.art'}}
+    <!--右侧主体-->
     <div class="body-warp">
+     <!--右侧头部-->
     {{include './header.art'}}
+     <!--右侧内容-->
+    {{block 'main'}}{{/block}}
     </div>
   </div>
-  
 
-  <script type="text/javascript" src="/admin/lib/js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="/admin/lib/js/jquery.min.js"></script>
   <script type="text/javascript" src="/admin/lib/js/bootstrap.min.js"></script>
+  {{block 'script'}}{{/block}}
+  <script>
+    $(function(){
+      $('.sider-menus li').on('click',function(){
+        var url = $(this).data('url');
+        console.log('=========',url)
+    //     history.pushState({ title: 'test',
+    // url:url},null,url)
+        location.href = url
+      })
+    })
+
+    window.onpopstate = function(event) {
+      var state = history.state; // 等价于 
+      var state = event.state;
+      console.log('---state',state)
+      // if(state && state.content) $('body').html(state.content);
+    };
+</script>
 </body>
 </html>

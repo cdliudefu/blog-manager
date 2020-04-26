@@ -1,0 +1,9 @@
+{{extend './common/layout.art'}}
+
+{{block 'main'}}
+
+<div class="setting-warp">
+setting
+</div>
+
+{{/block}}
