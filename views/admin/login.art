@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Welcome</title>
   <link rel="stylesheet" href="/admin/lib/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/admin/css/base.css">
+  <link rel="stylesheet" href="/admin/css/login.css">
 </head>
 <body>
   <div class="container">
