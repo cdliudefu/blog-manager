@@ -22,6 +22,7 @@ a:hover {
 /* 左侧导航菜单 */
 .sider-warp {
   width: 250px;
+  min-width: 150px;
   background: #000;
   opacity: 0.4;
   flex: 10%;
@@ -62,14 +63,13 @@ a:hover {
 
 /* 右侧主体 */
 .body-warp {
-  background: #ccc;
   flex: 90%;
 }
 
 .body-warp .header-wrap {
   background: #fff;
   height: 100px;
-  border-bottom: #eee;
+  border-bottom: 1px solid #ccc;
 }
 .body-warp .header-wrap > .btn-group {
   top: 50%;
