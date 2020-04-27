@@ -4,17 +4,26 @@ const express = require('express')
 
 //引入表单提交转换模块
 const bodyParser = require('body-parser')
+//引入session模块
+const session = require('express-session')
 
 //引入路由
 const { admin, home } = require('./route')
 
+require('./model/connect')
+
 //创建服务实例
 const app = express()
+
 //静态资源
 app.use(express.static(path.join(__dirname, 'public')))
-
 //表单处理模块
 app.use(bodyParser.urlencoded({ extended: false }))
+//session模块
+app.use(session({ secret: 'secret blog' }))
+
+//中间件过滤未登陆访问
+app.use('/admin', require('./middleware/filter'))
 
 //模板文件路径
 app.set('views', path.join(__dirname, 'views'))
