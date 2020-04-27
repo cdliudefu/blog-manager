@@ -3,10 +3,10 @@
  <div class="sider-logo"><i class="glyphicon glyphicon-globe" ></i></div>
  <div class="sider-menus">
   <ul>
-    <li data-url="/admin/dashbord"><i class="glyphicon glyphicon-list"></i>DashBord</li>
-    <li data-url="/admin/article"><i class="glyphicon glyphicon-tasks"></i>文章列表</li>
-    <li data-url="/admin/user"><i class="glyphicon glyphicon-user"></i>用户列表</li>
-    <li data-url="/admin/setting"><i class="glyphicon glyphicon-wrench"></i>设置</li>
+    <li data-url="/admin/dashbord"><a href="/admin/dashbord"><i class="glyphicon glyphicon-list"></i>DashBord</a></li>
+    <li data-url="/admin/article"><a href="/admin/article"><i class="glyphicon glyphicon-tasks"></i>文章列表</a></li>
+    <li data-url="/admin/user"><a href="/admin/user"><i class="glyphicon glyphicon-user"></i>用户列表</a></li>
+    <li data-url="/admin/setting"><a href="/admin/setting"><i class="glyphicon glyphicon-wrench"></i>设置</a></li>
   </ul>
  </div>
 </div>
