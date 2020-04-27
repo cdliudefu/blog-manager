@@ -12,7 +12,13 @@
   <div class="container">
     <div class="login-wrap">
     <div class="login-title"><h3>欢迎回来</h3></div>
-    <form class="form-horizontal" method="post" action="/admin/index" id="loginForm">
+    {{if message }}
+    <div class="alert alert-danger alert-dismissable" style="margin:10px auto;width:500px;">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <strong>{{message}}</strong>.
+    </div>
+    {{/if}}
+    <form class="form-horizontal" method="post" action="/admin/login" id="loginForm">
       <div class="form-group">
         <label for="email" class="col-sm-2 control-label">Email：</label>
         <div class="col-sm-10">
