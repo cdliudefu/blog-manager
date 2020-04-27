@@ -2,12 +2,12 @@
  <div class="btn-group pull-right">
   <div class="btn-group">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-      admin
+      {{userInfo && userInfo.username}}
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu">
-      <li><a href="#">设置</a></li>
-      <li><a href="#">退出</a></li>
+      <li><a href="/admin/setting">设置</a></li>
+      <li><a href="/admin/loginOut">退出</a></li>
     </ul>
   </div>
 </div>
