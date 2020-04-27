@@ -7,7 +7,163 @@
 {{block 'main'}}
 
 <div class="user-warp">
-this is user
+  <div class="user-addbtn">
+    <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#addUser">新增</button>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-condensed table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>用户名</th>
+          <th>邮箱</th>
+          <th>角色</th>
+          <th>状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+      {{each users}}
+        <tr>
+          <td>{{$value.username}}</td>
+          <td>{{$value.email}}</td>
+          <td>{{$value.role}}</td>
+          <td>{{$value.status}}</td>
+          <td>
+          <a href="/admin/edit/{{$value._id+''}}"><i class="glyphicon glyphicon-edit"></i></a>
+          <a href="/admin/delete/{{$value._id+''}}"><i class="glyphicon glyphicon-remove-circle"></i></a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <!--弹出框-->
+  <div class="modal fade" id="addUser" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">新增用户</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" role="form" action="/admin/addUser" name="addForm" method="post" id="addForm">
+          <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-10">
+              <input type="email" required class="form-control" name="username" id="username" value="{{user && user.username}}" placeholder="请输入用户名">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">邮箱</label>
+            <div class="col-sm-10">
+              <input type="email" required class="form-control" name="email" id="email" value="{{user && user.email}}" placeholder="请输入邮箱">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+              <input type="password" required class="form-control" name="password" id="password" value="{{user && user.password}}" placeholder="请输入密码">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">角色</label>
+            <div class="col-sm-10">
+              <input type="hidden" id="roleSelect" value="{{user && user.role}}"/>
+              <select class="form-control" name="role" id="role">
+              <option value="normal">普通成员</option>
+              <option value="manager">管理员</option>
+              <option value="admin">超级管理员</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">状态</label>
+            <div class="col-sm-10">
+              <input type="hidden" id="statusSelect" value="{{user && user.status}}"/>
+              <select class="form-control" name="status" id="status">
+              <option value="1">启用</option>
+              <option value="0">禁用</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="addBtn">保存</button>
+      </div>
+    </div>
+  </div>
 </div>
 
+<div class="modal fade" id="tipModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">提示</h4>
+      </div>
+      <div class="modal-body">
+        <p id="tipMsg"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+{{/block}}
+
+{{block 'script'}}
+<script>
+  $(document).ready(function(){
+    //将表单字段转换为JSON格式
+    function serializeToJson(){
+      var fields = $('#addForm').serializeArray()
+      var obj={}
+      $.each(fields,function(i,item){
+        obj[item.name] = item.value
+      })
+      return obj
+    }
+
+    //绑定保存事件
+    $('#addBtn').on('click',function(){
+      var obj = serializeToJson()
+      if(!obj.username.trim()){
+        showTip({id:'tipModal',message:'用户名不能为空'})
+        return false;
+      }
+      if(!obj.email.trim()){
+        showTip({id:'tipModal',message:'邮箱不能为空'})
+        return false;
+      }
+      if(!obj.password.trim()){
+        showTip({id:'tipModal',message:'密码不能为空'})
+        return false;
+      }
+      $('#addForm').submit()
+    })
+
+
+    function showTip(options){
+      time = options.time || 2000
+      $('#tipMsg').html(options.message||'请填写信息')
+      $('#'+options.id).modal('show')
+      var timer = setTimeout(function(){
+          clearTimeout(timer)
+          $('#'+options.id).modal('hide')
+      },time)
+    }
+
+    //编辑是时候如果有值就弹出编辑模态层
+    if($('#username').val()){
+      $('#role').find("option[value ='"+ $('#roleSelect').val()+"']").attr('selected',true)
+      $('#status').find("option[value ='"+$('#statusSelect').val()+"']").attr('selected',true)
+      $('#addUser').modal('show')
+    }
+
+  })
+</script>
 {{/block}}
