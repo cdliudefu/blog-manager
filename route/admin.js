@@ -1,37 +1,36 @@
 const express = require('express')
-    //实例路由对象
+//实例路由对象
 const router = express.Router()
+const { loginPage, login, loginOut } = require('./admin/login')
+const { userList, addUser, removeUser, editUser } = require('./admin/user')
 
-router.get('/login', (req, res) => {
-    res.render('admin/login', { msg: 'test' })
-})
+//登陆页面
+router.get('/login', loginPage)
 
 //提交登陆
-router.post('/index', (req, res) => {
-    console.log('res==', req.app)
-    const { email, password } = req.body
+router.post('/login', login)
 
-    res.redirect('/admin/dashbord')
-})
+router.get('/loginOut', loginOut)
 
 //dashbord
 router.get('/dashbord', (req, res) => {
-    res.render('admin/dashbord', { user: 'lisi' })
+  res.render('admin/dashbord', { user: 'lisi' })
 })
 
 //用户
-router.get('/user', (req, res) => {
-    res.render('admin/user', { user: 'user' })
-})
+router.get('/user', userList)
+router.post('/addUser', addUser)
+router.get('/delete/:id', removeUser)
+router.get('/edit/:id', editUser)
 
 //文章
 router.get('/article', (req, res) => {
-    res.render('admin/article', { user: 'article' })
+  res.render('admin/article', { user: 'article' })
 })
 
 //设置
 router.get('/setting', (req, res) => {
-    res.render('admin/setting', { user: 'setting' })
+  res.render('admin/setting', { user: 'setting' })
 })
 
 module.exports = router
