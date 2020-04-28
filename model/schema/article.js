@@ -8,7 +8,9 @@ const articleSchema = new mongoose.Schema({
   content: {
     type: String
   },
-  author: String
+  author: String,
+  pushDate:Date,
+  imageUrl:String
 })
 
 const Article = mongoose.model('Article', articleSchema)
